@@ -15,19 +15,10 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="card card-congratulations">
                             <div class="card-body text-center">
-                                <img src="/app-assets/images/elements/decore-left.png" class="congratulations-img-left"
-                                    alt="card-img-left" />
-                                <img src="/app-assets/images/elements/decore-right.png"
-                                    class="congratulations-img-right" alt="card-img-right" />
-                                <div class="avatar avatar-xl bg-primary shadow">
-                                    <div class="avatar-content">
-                                        <i data-feather="award" class="font-large-1"></i>
-                                    </div>
-                                </div>
-                                <div class="text-center">
+                                <div class="text-center mt-1">
                                     <h1 class="mb-1 text-white">Selamat Datang {{auth()->user()->name}},</h1>
-                                    <p class="card-text m-auto w-75">
-                                        Selamat datang di Aplikasi PROFMAT, penentuan Skala usaha bisnis retail berbasis website
+                                    <p class="card-text m-auto w-75 mb-1">
+                                        Selamat datang di Aplikasi PKH-MAUT, penentuan Skala usaha bisnis retail berbasis website
                                     </p>
                                 </div>
                             </div>
@@ -37,170 +28,68 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                              <h4 class="card-title">Contoh Alternatif</h4>
-                            </div>
-                            {{-- <div class="card-body">
-                              <p class="card-text">
-                                Add <code>.table-bordered</code> for borders on all sides of the table and cells. For Inverse Dark Table, add
-                                <code>.table-dark</code> along with <code>.table-bordered</code>.
-                              </p>
-                            </div> --}}
-                            @php
-                                $alt = ['AlfaMidi', 'AlfaMart', 'Indomaret', 'Cicle K', 'MiniMart', 'Hypermart', 'Lottemart', 'Kios/Pedagang Kaki 5', 'Percetakan', 'Sablon'];
-                                $ket = ['Retail Modern', 'Pasar Tradisional'];
-
-                            @endphp
-                            <div class="table-responsive">
-                              <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th>No.</th>
-                                    <th>Keterangan</th>
-                                    <th>Alternatif</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($alt as $a => $al)
-                                        <tr>
-                                            <td>
-                                                {{$a+1}}
-                                            </td>
-                                            <td >@if ($a < 7) {{$ket[0]}} @else {{$ket[1]}} @endif</td>
-                                            <td>{{$al}}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                              </table>
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <div class="card card-statistics">
+                          <div class="card-header">
+                            <h4 class="card-title">Menu</h4>
+                            <div class="d-flex align-items-center">
                             </div>
                           </div>
-                    </div>
+                          <div class="card-body statistics-body">
+                            <div class="row">
+                              <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                <div class="d-flex flex-row">
+                                  <div class="avatar bg-light-primary me-2">
+                                    <a href="{{route('alternatif.index')}}" class="avatar-content">
+                                        <i data-feather="target"></i>
+                                    </a>
+                                  </div>
+                                  <div class="my-auto">
+                                    <h4 class="fw-bolder mb-0">Alternatif</h4>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                <div class="d-flex flex-row">
+                                  <div class="avatar bg-light-info me-2">
+                                    <a href="{{route('kriteria.index')}}" class="avatar-content">
+                                        <i data-feather="grid"></i>
+                                    </a>
+                                  </div>
+                                  <div class="my-auto">
+                                    <h4 class="fw-bolder mb-0">Kriteria</h4>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                                <div class="d-flex flex-row">
+                                  <div class="avatar bg-light-danger me-2">
+                                    <a href="{{route('subkriteria.index')}}" class="avatar-content">
+                                        <i data-feather="archive"></i>
+                                    </a>
+                                  </div>
+                                  <div class="my-auto">
+                                    <h4 class="fw-bolder mb-0">Sub Kriteria</h4>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="d-flex flex-row">
+                                  <div class="avatar bg-light-success me-2">
+                                    <a href="{{route('user.index')}}" class="avatar-content">
+                                        <i data-feather="user"></i>
+                                    </a>
+                                  </div>
+                                  <div class="my-auto">
+                                    <h4 class="fw-bolder mb-0">User Management</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
-
-                @if (auth()->user()->role == 'admin')
-                    {{-- mini button start --}}
-                    {{-- <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="alternatif">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Alternatif</p>
-                                    </div>
-                                    <div class="avatar bg-light-danger p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="database">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="kriteria">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Kriteria</p>
-                                    </div>
-                                    <div class="avatar bg-light-info p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="check-square">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="subkriteria">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Sub-Kriteria</p>
-                                    </div>
-                                    <div class="avatar bg-light-warning p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="check-circle">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="wp">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Hitung WP</p>
-                                    </div>
-                                    <div class="avatar bg-light-primary p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="file-text">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div> --}}
-                    {{-- mini button end --}}
-                    {{-- mini button start --}}
-                    {{-- <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="owa">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Hitung OWA</p>
-                                    </div>
-                                    <div class="avatar bg-light-danger p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="folder">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="hasil">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Data Hasil Akhir</p>
-                                    </div>
-                                    <div class="avatar bg-light-info p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="archive">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="user">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">User Management</p>
-                                    </div>
-                                    <div class="avatar bg-light-warning p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="user">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <a class="card" href="dash">
-                                <div class="card-header">
-                                    <div>
-                                        <p class="card-text fw-bolder">Setting</p>
-                                    </div>
-                                    <div class="avatar bg-light-primary p-50 m-0">
-                                        <div class="avatar-content">
-                                            <img data-feather="settings">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div> --}}
-                    {{-- mini button end --}}
-                @endif
 
 
             </section>

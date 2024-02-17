@@ -56,7 +56,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         #untuk tampilkan halaman user management beserta datatabel-nya.
-        if (auth()->user()->role != 'admin'){
+        if (auth()->user()->role != 'pegawai'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 

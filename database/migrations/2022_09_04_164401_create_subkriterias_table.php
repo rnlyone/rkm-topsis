@@ -17,7 +17,7 @@ class CreateSubkriteriasTable extends Migration
             $table->id();
             $table->foreignId('id_kriteria')->constrained('kriterias');
             $table->text('nama');
-            $table->integer('bobot');
+            $table->float('bobot');
             $table->timestamps();
         });
     }

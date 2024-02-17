@@ -56,7 +56,7 @@
                                         <th>No.</th>
                                         <th>Kode</th>
                                         <th>Nama</th>
-                                        <th>jenis_kriteria</th>
+                                        <th>Bobot Kriteria</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -110,18 +110,9 @@
                         <input type="text" name="nama" placeholder="Nama Kriteria" value="{{old('nama')}}" class="form-control" />
                     </div>
 
-                    <label>Jenis Kriteria : </label>
+                    <label>Bobot Kriteria: </label>
                     <div class="mb-1">
-                        <div class="demo-inline-spacing">
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="jenis_kriteria" id="inlineRadio1" value="cf" checked="">
-                              <label class="form-check-label" for="inlineRadio1">Core Factor</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="jenis_kriteria" id="inlineRadio2" value="sf">
-                              <label class="form-check-label" for="inlineRadio2">Secondary Factor</label>
-                            </div>
-                          </div>
+                        <input type="text" name="bobot" placeholder="0.0 - 1.0" value="{{old('bobot')}}" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -152,18 +143,9 @@
                         <input type="text" name="nama" placeholder="Nama Kriteria" value="{{$krd->nama}}" class="form-control" />
                     </div>
 
-                    <label>Jenis Kriteria : </label>
+                    <label>Bobot Kriteria: </label>
                     <div class="mb-1">
-                        <div class="demo-inline-spacing">
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="jenis_kriteria" id="inlineRadio1" value="cf" checked="">
-                              <label class="form-check-label" for="inlineRadio1">Core Factor</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="jenis_kriteria" id="inlineRadio2" value="sf">
-                              <label class="form-check-label" for="inlineRadio2">Secondary Factor</label>
-                            </div>
-                          </div>
+                        <input type="text" name="bobot" placeholder="0.0 - 1.0" value="{{$krd->bobot}}" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -228,7 +210,7 @@
                     {data: 'id'},
                     {data: 'kode'},
                     {data: 'nama'},
-                    {data: 'jenis_krit'},
+                    {data: 'bobot'},
                     {data: 'action'}
                 ],
 

@@ -10,6 +10,25 @@ use Yajra\DataTables\Facades\DataTables;
 
 class KriteriaController extends Controller
 {
+
+    static function singkatan($string) {
+        $words = explode(' ', $string); // Pisahkan string menjadi array kata-kata
+        $abbreviation = '';
+
+        if (count($words) == 1) {
+            // Jika hanya terdapat satu kata
+            $abbreviation = strtoupper(substr($string, 0, 1) . substr($string, 4, 1));
+        } else {
+            // Jika terdapat lebih dari satu kata
+            foreach ($words as $index => $word) {
+                // Ambil inisial setiap kata atau gunakan huruf keempat jika hanya ada satu kata
+                $abbreviation .= ($index < 2) ? strtoupper($word[0]) : '';
+            }
+        }
+
+        return $abbreviation;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +36,7 @@ class KriteriaController extends Controller
      */
     public function index(Request $request)
     {
-        if (auth()->user()->role == 'guru'){
+        if (auth()->user()->role != 'pegawai'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 
@@ -38,18 +57,10 @@ class KriteriaController extends Controller
                 return $button;
             })
             ->addColumn('kode', function($data){
-                $kodekriteria = 'C'.$data->id;
+                $kodekriteria = KriteriaController::singkatan($data->nama);
                 return $kodekriteria;
             })
-            ->addColumn('jenis_krit', function($data){
-                if($data->jenis_kriteria == 'cf'){
-                    $jenis = 'Core Factor';
-                }else {
-                    $jenis = 'Secondary Factor';
-                }
-                return $jenis;
-            })
-        ->rawColumns(['action', 'kode', 'jenis_krit'])
+        ->rawColumns(['action', 'kode'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -91,7 +102,7 @@ class KriteriaController extends Controller
                 'unique:App\Models\Kriteria,nama',
                 'required'
             ],
-            'jenis_kriteria' => [
+            'bobot' => [
                 'required'
             ]
         ]);
@@ -100,7 +111,7 @@ class KriteriaController extends Controller
             Kriteria::create([
                 'id' => $req->id,
                 'nama' => $req->nama,
-                'jenis_kriteria' => $req->jenis_kriteria,
+                'bobot' => $req->bobot,
             ]);
             return back()->with('success', 'Kriteria Berhasil Dibuat.');
         } catch (\Throwable $th) {
@@ -142,7 +153,7 @@ class KriteriaController extends Controller
             // dd($req);
             Kriteria::where('id', $req->id)->update([
                 'nama' => $req->nama,
-                'jenis_kriteria' => $req->jenis_kriteria,
+                'bobot' => $req->bobot,
             ]);
             return back()->with('success', 'Kriteria Berhasil Diedit.');
         }catch (Exception $e) {

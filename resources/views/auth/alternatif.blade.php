@@ -45,6 +45,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama</th>
+                                    <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -108,6 +109,10 @@
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{$ald->nama}}" class="form-control" />
                     </div>
+                    <label>Alamat Alternatif: </label>
+                    <div class="mb-1">
+                        <input type="text" name="alamat" placeholder="Alamat Alternatif" value="{{$ald->alamat}}" class="form-control" />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Accept</button>
@@ -160,6 +165,10 @@
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{old('nama')}}" class="form-control" />
                     </div>
+                    <label>Alamat Alternatif: </label>
+                    <div class="mb-1">
+                        <input type="text" name="alamat" placeholder="Alamat Alternatif" value="{{old('alamat')}}" class="form-control" />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Accept</button>
@@ -204,6 +213,7 @@
                 columns : [
                     {data: 'id'},
                     {data: 'nama'},
+                    {data: 'alamat'},
                     {data: 'action'}
                 ],
 

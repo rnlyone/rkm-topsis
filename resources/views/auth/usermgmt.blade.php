@@ -137,39 +137,39 @@
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="adminid"
-                                  value="admin"
-                                  @if ($usd->role == "admin")
+                                  id="kepalaid"
+                                  value="kepala"
+                                  @if ($usd->role == "kepala")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="adminid">Admin</label>
+                                <label class="form-check-label" for="kepalaid">kepala</label>
                               </div>
                               <div class="form-check form-check-inline">
                                 <input
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="kepsekid"
-                                  value="kepsek"
-                                  @if ($usd->role == "kepsek")
+                                  id="pegawaiid"
+                                  value="pegawai"
+                                  @if ($usd->role == "pegawai")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="kepsekid">Kepala Sekolah</label>
+                                <label class="form-check-label" for="pegawaiid">Pegawai</label>
                               </div>
                               <div class="form-check form-check-inline">
                                 <input
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="idguru"
-                                  value="guru"
-                                  @if ($usd->role == "guru")
+                                  id="idpenilai"
+                                  value="penilai"
+                                  @if ($usd->role == "penilai")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="idguru">Guru</label>
+                                <label class="form-check-label" for="idpenilai">penilai</label>
                               </div>
                         </div>
                     </div>
@@ -244,26 +244,39 @@
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="adminid"
-                                  value="admin"
-                                  @if ($usd->role == "admin")
+                                  id="kepalaid"
+                                  value="kepala"
+                                  @if ($usd->role == "kepala")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="adminid">Admin</label>
+                                <label class="form-check-label" for="kepalaid">Kepala</label>
                               </div>
                               <div class="form-check form-check-inline">
                                 <input
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="userid"
-                                  value="user"
-                                  @if ($usd->role == "user")
+                                  id="pegawaiid"
+                                  value="pegawai"
+                                  @if ($usd->role == "pegawai")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="userid">User</label>
+                                <label class="form-check-label" for="pegawaiid">Pegawai</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="role"
+                                  id="penilaiid"
+                                  value="penilai"
+                                  @if ($usd->role == "penilai")
+                                    checked
+                                  @endif
+                                />
+                                <label class="form-check-label" for="penilaiid">Penilai</label>
                               </div>
                         </div>
                     </div>

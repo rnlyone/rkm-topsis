@@ -17,7 +17,7 @@ class AlternatifController extends Controller
      */
     public function index(Request $request)
     {
-        if (auth()->user()->role == 'guru'){
+        if (auth()->user()->role != 'pegawai'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 
@@ -87,7 +87,8 @@ class AlternatifController extends Controller
         try {
             Alternatif::create([
                 'id' => $req->id,
-                'nama' => $req->nama
+                'nama' => $req->nama,
+                'alamat' => $req->alamat ?? "Kosong"
             ]);
             return back()->with('success', 'Alternatif Berhasil Dibuat.');
         } catch (Exception $e) {

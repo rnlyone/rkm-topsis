@@ -16,7 +16,7 @@ class SubkriteriaController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role == 'guru'){
+        if (auth()->user()->role != 'pegawai'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 
@@ -45,8 +45,9 @@ class SubkriteriaController extends Controller
     {
         $req->validate([
             'nama' => [
-                'regex:/^[a-zA-Z ]+$/u',
-                'unique:App\Models\Subkriteria,nama'
+                'required'
+                // 'regex:/^[a-zA-Z ]+$/u',
+                // 'unique:App\Models\Subkriteria,nama'
             ]
         ]);
 
