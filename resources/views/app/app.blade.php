@@ -127,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     @else
                                     Penilai
                                 @endif</span></div><span class="avatar"><img class="round"
-                                src="/app-assets/images/portrait/small/default.jpeg" alt="avatar" height="40"
+                                src="/app-assets/images/profile.png" alt="avatar" height="40"
                                 width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a

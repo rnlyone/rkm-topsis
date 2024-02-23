@@ -60,7 +60,7 @@ class PenilaianController extends Controller
 
                 #listing untuk status sudah selesai dinilai atau belum
                 $sumkrit = Kriteria::count();
-                $sumnilai = Penilaian::where('id_alternatif', $data->id)->get()->count();
+                $sumnilai = Penilaian::where('id_alternatif', $data->id)->where('id_user', auth()->user()->id)->get()->count();
 
                 if (($sumkrit-$sumnilai) == 0) {
                     $status = '<span class="badge bg-success">Selesai</span>';

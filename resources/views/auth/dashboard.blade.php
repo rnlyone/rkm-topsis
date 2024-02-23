@@ -18,7 +18,7 @@
                                 <div class="text-center mt-1">
                                     <h1 class="mb-1 text-white">Selamat Datang {{auth()->user()->name}},</h1>
                                     <p class="card-text m-auto w-75 mb-1">
-                                        Selamat datang di Aplikasi PKH-MAUT, penentuan Skala usaha bisnis retail berbasis website
+                                        Selamat datang di Aplikasi PKH-MAUT, Penentuan Penerima Bantuan Program Keluarga Harapan Berbasis <br> Multi Attribute Utility Theory
                                     </p>
                                 </div>
                             </div>

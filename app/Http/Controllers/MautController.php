@@ -60,7 +60,7 @@ class MautController extends Controller
 
                         // Normalisasi
                         foreach($alt as $a => $al){
-                            $nilai[$user->id][$al->id][$k->id] = $penilaian->where('id_alternatif', $al->id)->where('id_kriteria', $k->id)->first()->nilai ?? 0;
+                            $nilai[$user->id][$al->id][$k->id] = $penilaian->where('id_alternatif', $al->id)->where('id_kriteria', $k->id)->where('id_user', $user->id)->first()->nilai ?? 0;
                             try {
                                 $normalisasi[$user->id][$al->id][$k->id] = ($nilai[$user->id][$al->id][$k->id] - $min[$user->id][$k->id]) / $selisih[$user->id][$k->id];
                             } catch (\Throwable $th) {

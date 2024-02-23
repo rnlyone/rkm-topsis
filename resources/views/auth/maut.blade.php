@@ -41,7 +41,7 @@
                             <h4 class="card-title">Perhitungan Multi Attribute Utility Theory </h4>
                           </div>
                           <div class="card-body">
-                            @foreach ($users->where('role', '!=', 'pegawai') as $user)
+                            @foreach ($users->where('role', '==', 'penilai') as $user)
                             <div class="accordion accordion-margin" id="accordionMargin" data-toggle-hover="true">
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingMargin{{$user->id}}">
