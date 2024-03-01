@@ -44,6 +44,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>No.</th>
+                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
                                     <th>Aksi</th>
@@ -105,6 +106,10 @@
                     <div class="mb-1">
                         <input type="number" name="id" class="touchspin-min-max" value="{{$ald->id}}"/>
                     </div>
+                    <label>Nomor Induk Kependudukan: </label>
+                    <div class="mb-1">
+                        <input type="text" name="NIK" placeholder="NIK Alternatif" value="{{$ald->NIK}}" class="form-control" />
+                    </div>
                     <label>Nama Alternatif: </label>
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{$ald->nama}}" class="form-control" />
@@ -160,7 +165,10 @@
                     <div class="mb-1">
                         <input type="number" name="id" class="touchspin-min-max" value="{{$latestalter_id+1}}"/>
                     </div>
-
+                    <label>Nomor Induk Kependudukan: </label>
+                    <div class="mb-1">
+                        <input type="text" name="NIK" placeholder="NIK Alternatif" value="{{old('NIK')}}" class="form-control" />
+                    </div>
                     <label>Nama Alternatif: </label>
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{old('nama')}}" class="form-control" />
@@ -212,6 +220,7 @@
 
                 columns : [
                     {data: 'id'},
+                    {data: 'NIK'},
                     {data: 'nama'},
                     {data: 'alamat'},
                     {data: 'action'}

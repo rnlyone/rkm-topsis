@@ -81,12 +81,17 @@ class AlternatifController extends Controller
             'nama' => [
                 'unique:App\Models\Alternatif,nama',
                 'required'
+            ],
+            'NIK' => [
+                'unique:App\Models\Alternatif,NIK, '.$req->NIK,
+                'required'
             ]
         ]);
 
         try {
             Alternatif::create([
                 'id' => $req->id,
+                'NIK' => $req->NIK,
                 'nama' => $req->nama,
                 'alamat' => $req->alamat ?? "Kosong"
             ]);
@@ -106,6 +111,10 @@ class AlternatifController extends Controller
             'nama' => [
                 // 'unique:App\Models\Alternatif,nama, '.$req->nama,
                 'required'
+            ],
+            'NIK' => [
+                'unique:App\Models\Alternatif,NIK, '.$req->NIK,
+                'required'
             ]
         ]);
 
@@ -113,6 +122,7 @@ class AlternatifController extends Controller
             Alternatif::where('id', $req->idedit)->update([
                 'id' => $req->id,
                 'nama' => $req->nama,
+                'NIK' => $req->NIK,
             ]);
             return back()->with('success', 'Alternatif Berhasil Diedit.');
         } catch (Exception $e) {
