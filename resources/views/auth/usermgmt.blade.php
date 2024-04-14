@@ -257,13 +257,13 @@
                                   class="form-check-input"
                                   type="radio"
                                   name="role"
-                                  id="mahasiswaid"
+                                  id="adminid"
                                   value="admin"
                                   @if ($usd->role == "admin")
                                     checked
                                   @endif
                                 />
-                                <label class="form-check-label" for="mahasiswaid">Mahasiswa</label>
+                                <label class="form-check-label" for="adminid">Admin</label>
                               </div>
                               <div class="form-check form-check-inline">
                                 <input
