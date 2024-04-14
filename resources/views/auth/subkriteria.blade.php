@@ -1,4 +1,4 @@
-@include('app.app', ['subkriteria_active' => 'active', 'title' => 'Data Sub-Kriteria'])
+@include('app.app', ['subkriteria_active' => 'active', 'title' => 'Sub-Kriteria'])
 @php
     use App\Models\Subkriteria;
     use App\Http\Controllers\KriteriaController;
@@ -16,12 +16,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Data Sub-Kriteria</h2>
+                            <h2 class="content-header-title float-start mb-0">Sub-Kriteria</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="Kriteria">Data Sub-Kriteria</a>
+                                    <li class="breadcrumb-item"><a href="Kriteria">Sub-Kriteria</a>
                                     </li>
                                 </ol>
                             </div>
@@ -74,14 +74,14 @@
                     <div style="margin: 10pt">
                         <div class="card-datatable table-responsive pt-0">
                             <div class="card-header p-0">
-                                <div class="head-label"><h5 class="mt-1">Sub-Kriteria {{$krd->nama}} ({{KriteriaController::singkatan($krd->nama)}})</h5></div>
+                                <div class="head-label"><h5 class="mt-1">Sub-Kriteria {{$krd->nama}} (K{{$krd->id}})</h5></div>
                                 <div class="dt-action-buttons text-end">
                                     <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#tambah-subkriteria{{$krd->id}}" href="javascript:void(0)" class="btn btn-success" id="tombol-tambah">
                                         <i data-feather='plus'></i>
                                     </button>
                                 </div>
                             </div>
-                            <table class="user-list-table table subTable" id="{{KriteriaController::singkatan($krd->nama).$krd->id}}table">
+                            <table class="user-list-table table subTable" id="K{{$krd->id}}table">
                                 <thead class="table-light">
                                     <tr>
                                         <th>No.</th>
@@ -125,7 +125,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel1">Tambah Sub-Kriteria {{$krd->nama}} ({{KriteriaController::singkatan($krd->nama).$krd->id}})</h4>
+                                <h4 class="modal-title" id="myModalLabel1">Tambah Sub-Kriteria {{$krd->nama}} (K{{$krd->id}})</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="{{route('subkriteria.store')}}" method="post">
@@ -158,7 +158,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel1">Edit Sub-Kriteria {{$sbd->nama}} | {{$krd->nama}} ({{KriteriaController::singkatan($krd->nama).$krd->id}})</h4>
+                            <h4 class="modal-title" id="myModalLabel1">Edit Sub-Kriteria {{$sbd->nama}} | {{$krd->nama}} (K{{$krd->id}})</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{route('subkriteria.edit')}}" method="post">

@@ -16,7 +16,6 @@ class CreateAlternatifsTable extends Migration
         Schema::create('alternatifs', function (Blueprint $table) {
             $table->id('id');
             $table->string('nama');
-            $table->text('alamat');
             $table->timestamps();
         });
     }

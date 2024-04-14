@@ -1,4 +1,4 @@
-@include('app.app', ['maut_active' => 'active', 'title' => 'Perhitungan Maut'])
+@include('app.app', ['topsis_active' => 'active', 'title' => 'Perhitungan Topsis'])
 
 @php
     use App\Http\Controllers\KriteriaController;
@@ -17,12 +17,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Perhitungan Maut</h2>
+                            <h2 class="content-header-title float-start mb-0">Perhitungan Topsis</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="owa">Perhitungan Maut</a>
+                                    <li class="breadcrumb-item"><a href="owa">Perhitungan Topsis</a>
                                     </li>
                                 </ol>
                             </div>
@@ -38,10 +38,10 @@
                       <div class="col-sm-12">
                         <div class="card">
                           <div class="card-header">
-                            <h4 class="card-title">Perhitungan Multi Attribute Utility Theory </h4>
+                            <h4 class="card-title">Perhitungan TOPSIS </h4>
                           </div>
                           <div class="card-body">
-                            @foreach ($users->where('role', '==', 'penilai') as $user)
+                            @foreach ($users->where('role', '==', 'mahasiswa') as $user)
                             <div class="accordion accordion-margin" id="accordionMargin" data-toggle-hover="true">
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingMargin{{$user->id}}">
@@ -52,49 +52,102 @@
                                   <div id="accordionMargin{{$user->id}}" class="accordion-collapse collapse" aria-labelledby="headingMargin{{$user->id}}" data-bs-parent="#accordionMargin">
                                     <div class="accordion-body">
                                         <div class="table-responsive">
+                                            <style>
+                                                .sticky-column {
+                                                    position: sticky;
+                                                    right: 0;
+                                                    background-color: white; /* Sesuaikan dengan warna latar belakang tabel */
+                                                }
+                                            </style>
                                             <table class="wptable user-list-table table table-striped">
                                               <thead>
                                                 <tr>
                                                     <th colspan="2">Informasi</th>
                                                     <th colspan="{{$krit->count()}}">Nilai</th>
                                                     <th colspan="{{$krit->count()}}">Normalisasi</th>
-                                                    <th colspan="{{$krit->count()+2}}">Nilai Akhir</th>
+                                                    <th colspan="{{$krit->count()}}">Normalisasi Terbobot</th>
+                                                    <th colspan="2">Jarak Alt. & Solusi Ideal</th>
+                                                    <th colspan="2">Nilai Akhir</th>
                                                 </tr>
                                                 <tr>
                                                   <th>No.</th>
                                                   <th>Alternatif</th>
                                                   @foreach ($krit as $k => $kr)
-                                                  <th>{{KriteriaController::singkatan($kr->nama)}}</th>
+                                                  <th>K{{$kr->id}}</th>
                                                   @endforeach
                                                   @foreach ($krit as $k => $kr)
-                                                  <th>{{KriteriaController::singkatan($kr->nama)}}</th>
+                                                  <th>K{{$kr->id}}</th> {{--normalisasi--}}
                                                   @endforeach
                                                   @foreach ($krit as $k => $kr)
-                                                  <th>{{KriteriaController::singkatan($kr->nama)}}</th>
+                                                  <th>K{{$kr->id}}</th> {{--normalisasi terbobot --}}
                                                   @endforeach
-                                                  <th>Jumlah</th>
+                                                  <th>D+</th> {{--Jarak Alt. & Solusi Ideal --}}
+                                                  <th>D-</th> {{--Jarak Alt. & Solusi Ideal --}}
+                                                  <th>Preferensi</th>
                                                   <th>Ranking</th>
                                                 </tr>
                                               </thead>
                                               <tbody>
                                                   @foreach ($alter as $a => $alt)
                                                           <tr>
-                                                              <td>{{$a}}</td>
+                                                              <td>{{$a+1}}</td>
                                                               <td>{{$alt->nama}}</td>
                                                               @foreach ($krit as $k => $kr)
-                                                              <td>{{$nilai[$user->id][$alt->id][$kr->id]}}</td>
+                                                              <td>{{$nilai[$user->id][$alt->id][$kr->id] ?? 0}}</td>
                                                               @endforeach
                                                               @foreach ($krit as $k => $kr)
-                                                              <td>{{round($normalisasi[$user->id][$alt->id][$kr->id], 2)}}</td>
+                                                              <td>{{round($normalisasi[$user->id][$kr->id][$alt->id], 2)}}</td>
                                                               @endforeach
                                                               @foreach ($krit as $k => $kr)
-                                                              <td>{{round($xbobot[$user->id][$alt->id][$kr->id], 2)}}</td>
+                                                              <td>{{round($bobotnormalisasi[$user->id][$kr->id][$alt->id], 2)}}</td>
                                                               @endforeach
+                                                              <td>{{$dpositif[$user->id][$alt->id]}}</td>
+                                                              <td>{{$dnegatif[$user->id][$alt->id]}}</td>
                                                               <td>{{round($nilaiakhir[$user->id][$alt->id], 2)}}</td>
                                                               <td>{{$ranking[$user->id][$alt->id]}}</td>
                                                           </tr>
                                                   @endforeach
                                               </tbody>
+                                              <tfoot>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Alternatif</th>
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>K{{$kr->id}}</th>
+                                                    @endforeach
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>K{{$kr->id}}</th> {{--normalisasi--}}
+                                                    @endforeach
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>K{{$kr->id}}</th> {{--normalisasi terbobot --}}
+                                                    @endforeach
+                                                    <th>D+</th> {{--Jarak Alt. & Solusi Ideal --}}
+                                                    <th>D-</th> {{--Jarak Alt. & Solusi Ideal --}}
+                                                    <th>Preferensi</th>
+                                                    <th>Ranking</th>
+                                                  </tr>
+                                                <tr>
+                                                    <th colspan=""></th>
+                                                    <th colspan="">Nilai Pembagi</th>
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>{{$pembagi[$user->id][$kr->id] ?? 0}}</th>
+                                                    @endforeach
+                                                    <th colspan="{{$krit->count()-1}}"></th>
+                                                    <th colspan="">SI+</th>
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>{{$positif[$user->id][$kr->id] ?? 0}}</th>
+                                                    @endforeach
+                                                    <th colspan="4"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="{{$krit->count()*2+1}}"></th>
+                                                    <th colspan="">SI-</th>
+                                                    @foreach ($krit as $k => $kr)
+                                                    <th>{{$negatif[$user->id][$kr->id] ?? 0}}</th>
+                                                    @endforeach
+                                                    <th colspan="4"></th>
+                                                </tr>
+                                              </tfoot>
                                             </table>
                                           </div>
                                     </div>

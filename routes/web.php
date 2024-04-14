@@ -4,7 +4,7 @@ use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\PenilaianController;
-use App\Http\Controllers\MautController;
+use App\Http\Controllers\TopsisController;
 use App\Http\Controllers\SubkriteriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -51,10 +51,10 @@ Route::group(['middleware'=>['auth']], function(){
 
     Route::get('logout', [UserController::class, 'logout'])->name('auth.logout');
 
-    Route::get('maut', [MautController::class, 'maut'])->name('maut.index');
+    Route::get('topsis', [TopsisController::class, 'topsis'])->name('topsis.index');
 
-    Route::get('hasil', [MautController::class, 'indexHasil']);
-    Route::get('hasiluser', [MautController::class, 'hasilUser']);
+    Route::get('hasil', [TopsisController::class, 'indexHasil']);
+    Route::get('hasiluser', [TopsisController::class, 'hasilUser']);
 });
 
 Route::get('/', function () {

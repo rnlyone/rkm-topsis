@@ -36,7 +36,7 @@ class KriteriaController extends Controller
      */
     public function index(Request $request)
     {
-        if (auth()->user()->role != 'pegawai'){
+        if (auth()->user()->role != 'admin'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 
@@ -57,7 +57,8 @@ class KriteriaController extends Controller
                 return $button;
             })
             ->addColumn('kode', function($data){
-                $kodekriteria = KriteriaController::singkatan($data->nama);
+                // $kodekriteria = KriteriaController::singkatan($data->nama);
+                $kodekriteria = "K".$data->id;
                 return $kodekriteria;
             })
         ->rawColumns(['action', 'kode'])

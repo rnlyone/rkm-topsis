@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `maut`
+-- Database: `topsis`
 --
 
 -- --------------------------------------------------------
@@ -309,7 +309,7 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `decrypted_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('kepala','pegawai','penilai') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` enum('perusahaan','admin','mahasiswa') COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -320,9 +320,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `decrypted_password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Presley Glover', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'password', 'pegawai', 'KdVLRdwSTghmwzM9avP4pL5L663pRiWww7AIT8Tx3CaBQFVwFi85u9a354Jt', '2024-02-10 10:44:50', '2024-02-10 10:44:50'),
-(2, 'Lucio Greenfelder', 'penilai', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'password', 'penilai', 'IUBy9ELDzi5Xac5xQsV9fQzqNInEl7mCJY6pXhAeaCk3L2E5HNkHx0rkkvk1', '2024-02-10 10:44:50', '2024-02-10 10:44:50'),
-(11, 'Coba', 'cobasaja', '$2y$10$Rr8p3BW8zlElWVnK7n0buOzuCklnMNPCoEUxilc3tCfracnnJZIjG', 'password', 'kepala', NULL, '2024-02-10 15:47:46', '2024-02-16 23:06:43');
+(1, 'Presley Glover', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'password', 'admin', 'KdVLRdwSTghmwzM9avP4pL5L663pRiWww7AIT8Tx3CaBQFVwFi85u9a354Jt', '2024-02-10 10:44:50', '2024-02-10 10:44:50'),
+(2, 'Lucio Greenfelder', 'mahasiswa', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'password', 'mahasiswa', 'IUBy9ELDzi5Xac5xQsV9fQzqNInEl7mCJY6pXhAeaCk3L2E5HNkHx0rkkvk1', '2024-02-10 10:44:50', '2024-02-10 10:44:50'),
+(11, 'Coba', 'cobasaja', '$2y$10$Rr8p3BW8zlElWVnK7n0buOzuCklnMNPCoEUxilc3tCfracnnJZIjG', 'password', 'perusahaan', NULL, '2024-02-10 15:47:46', '2024-02-16 23:06:43');
 
 --
 -- Indexes for dumped tables

@@ -1,4 +1,4 @@
-@include('app.app', ['alter_active' => 'active', 'title' => 'Data Alternatif'])
+@include('app.app', ['alter_active' => 'active', 'title' => 'Alternatif'])
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -13,12 +13,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Data Alternatif</h2>
+                            <h2 class="content-header-title float-start mb-0">Alternatif</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="alternatif">Data Alternatif</a>
+                                    <li class="breadcrumb-item"><a href="alternatif">Alternatif</a>
                                     </li>
                                 </ol>
                             </div>
@@ -33,7 +33,7 @@
                     <div style="margin: 10pt">
                     <div class="card-datatable table-responsive pt-0">
                         <div class="card-header p-0">
-                            <div class="head-label"><h5 class="mt-1">Tabel Data Alternatif</h5></div>
+                            <div class="head-label"><h5 class="mt-1">Tabel Alternatif</h5></div>
                             <div class="dt-action-buttons text-end">
                                 <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#tambah-alternatif" href="javascript:void(0)" class="btn btn-success" id="tombol-tambah">
                                     <i data-feather='plus'></i>
@@ -44,9 +44,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>No.</th>
-                                    <th>NIK</th>
                                     <th>Nama</th>
-                                    <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -106,17 +104,9 @@
                     <div class="mb-1">
                         <input type="number" name="id" class="touchspin-min-max" value="{{$ald->id}}"/>
                     </div>
-                    <label>Nomor Induk Kependudukan: </label>
-                    <div class="mb-1">
-                        <input type="text" name="NIK" placeholder="NIK Alternatif" value="{{$ald->NIK}}" class="form-control" />
-                    </div>
                     <label>Nama Alternatif: </label>
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{$ald->nama}}" class="form-control" />
-                    </div>
-                    <label>Alamat Alternatif: </label>
-                    <div class="mb-1">
-                        <input type="text" name="alamat" placeholder="Alamat Alternatif" value="{{$ald->alamat}}" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -165,17 +155,9 @@
                     <div class="mb-1">
                         <input type="number" name="id" class="touchspin-min-max" value="{{$latestalter_id+1}}"/>
                     </div>
-                    <label>Nomor Induk Kependudukan: </label>
-                    <div class="mb-1">
-                        <input type="text" name="NIK" placeholder="NIK Alternatif" value="{{old('NIK')}}" class="form-control" />
-                    </div>
                     <label>Nama Alternatif: </label>
                     <div class="mb-1">
                         <input type="text" name="nama" placeholder="Nama Alternatif" value="{{old('nama')}}" class="form-control" />
-                    </div>
-                    <label>Alamat Alternatif: </label>
-                    <div class="mb-1">
-                        <input type="text" name="alamat" placeholder="Alamat Alternatif" value="{{old('alamat')}}" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -220,9 +202,7 @@
 
                 columns : [
                     {data: 'id'},
-                    {data: 'NIK'},
                     {data: 'nama'},
-                    {data: 'alamat'},
                     {data: 'action'}
                 ],
 

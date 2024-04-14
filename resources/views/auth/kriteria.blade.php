@@ -1,4 +1,4 @@
-@include('app.app', ['kriteria_active' => 'active', 'title' => 'Data Kriteria'])
+@include('app.app', ['kriteria_active' => 'active', 'title' => 'Kriteria'])
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -13,12 +13,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Data Kriteria</h2>
+                            <h2 class="content-header-title float-start mb-0">Kriteria</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="Kriteria">Data Kriteria</a>
+                                    <li class="breadcrumb-item"><a href="Kriteria">Kriteria</a>
                                     </li>
                                 </ol>
                             </div>
@@ -43,7 +43,7 @@
                     <div style="margin: 10pt">
                         <div class="card-datatable table-responsive pt-0">
                             <div class="card-header p-0">
-                                <div class="head-label"><h5 class="mt-1">Tabel Data Kriteria</h5></div>
+                                <div class="head-label"><h5 class="mt-1">Tabel Kriteria</h5></div>
                                 <div class="dt-action-buttons text-end">
                                     <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#tambah-kriteria" href="javascript:void(0)" class="btn btn-success" id="tombol-tambah">
                                         <i data-feather='plus'></i>

@@ -16,7 +16,7 @@ class SubkriteriaController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role != 'pegawai'){
+        if (auth()->user()->role != 'admin'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 

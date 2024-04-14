@@ -17,7 +17,7 @@ class AlternatifController extends Controller
      */
     public function index(Request $request)
     {
-        if (auth()->user()->role != 'pegawai'){
+        if (auth()->user()->role != 'admin'){
             return abort(403, 'Maaf, Halaman Ini Bukan Untuk Anda');
         }
 
@@ -82,18 +82,12 @@ class AlternatifController extends Controller
                 'unique:App\Models\Alternatif,nama',
                 'required'
             ],
-            'NIK' => [
-                'unique:App\Models\Alternatif,NIK, '.$req->NIK,
-                'required'
-            ]
         ]);
 
         try {
             Alternatif::create([
                 'id' => $req->id,
-                'NIK' => $req->NIK,
                 'nama' => $req->nama,
-                'alamat' => $req->alamat ?? "Kosong"
             ]);
             return back()->with('success', 'Alternatif Berhasil Dibuat.');
         } catch (Exception $e) {
@@ -103,43 +97,21 @@ class AlternatifController extends Controller
 
     public function editalternatif(Request $req)
     {
-        if($req->NIK == Alternatif::where('id', $req->id)->first()->NIK){
-            $req->validate([
-                'id' => [
-                    'unique:App\Models\Alternatif,id,'.$req->idedit,
-                    'required'
-                ],
-                'nama' => [
-                    // 'unique:App\Models\Alternatif,nama, '.$req->nama,
-                    'required'
-                ],
-                'NIK' => [
-                    'required'
-                ]
-            ]);
-        } else {
-            $req->validate([
-                'id' => [
-                    'unique:App\Models\Alternatif,id,'.$req->idedit,
-                    'required'
-                ],
-                'nama' => [
-                    // 'unique:App\Models\Alternatif,nama, '.$req->nama,
-                    'required'
-                ],
-                'NIK' => [
-                    'unique:App\Models\Alternatif,NIK, '.$req->NIK,
-                    'required'
-                ]
-            ]);
-        }
+        $req->validate([
+            'id' => [
+                'unique:App\Models\Alternatif,id,'.$req->idedit,
+                'required'
+            ],
+            'nama' => [
+                // 'unique:App\Models\Alternatif,nama, '.$req->nama,
+                'required'
+            ],
+        ]);
 
         try {
             Alternatif::where('id', $req->idedit)->update([
                 'id' => $req->id,
                 'nama' => $req->nama,
-                'NIK' => $req->NIK,
-                'alamat' => $req->alamat ?? "Kosong"
             ]);
             return back()->with('success', 'Alternatif Berhasil Diedit.');
         } catch (Exception $e) {

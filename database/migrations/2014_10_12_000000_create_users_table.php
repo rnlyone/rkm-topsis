@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
-        $table->string('password');
+            $table->string('password');
             $table->string('decrypted_password');
-            $table->enum('role', ['kepala', 'pegawai', 'penilai']);
+            $table->enum('role', ['admin', 'mahasiswa', 'perusahaan']);
             $table->rememberToken();
             $table->timestamps();
         });

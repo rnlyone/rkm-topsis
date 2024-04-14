@@ -34,11 +34,11 @@
                       <div class="col-sm-12">
                         <div class="card">
                           <div class="card-header">
-                            <h4 class="card-title">Perhitungan Multi Attribute Utility Theory </h4>
+                            <h4 class="card-title">Perhitungan TOPSIS </h4>
                           </div>
-                          @if (auth()->user()->role == 'pegawai')
+                          @if (auth()->user()->role == 'admin')
                             <div class="card-body">
-                                @foreach ($users->where('role', '!=', 'pegawai') as $user)
+                                @foreach ($users->where('role', '!=', 'admin') as $user)
                                 <div class="accordion accordion-margin" id="accordionMargin" data-toggle-hover="true">
                                     <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingMargin{{$user->id}}">
