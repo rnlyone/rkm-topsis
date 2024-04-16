@@ -102,7 +102,7 @@ class UserController extends Controller
      */
     public function store(Request $r)
     {
-        // dd($r);
+        // dd($r->id);
         #controller ini diperuntukan untuk membuat akun.
         $rules = [
             'password' => [
@@ -121,14 +121,17 @@ class UserController extends Controller
         $this->validate($r, $rules, $messages);
 
         try {
-            User::create([
-                'id' => $r->id,
+            $user = User::create([
+                'id' => $r->iduser,
                 'name' => $r->name,
                 'role' => $r->role,
                 'username' => $r->username,
                 'password' => bcrypt($r->password),
                 'decrypted_password' => $r->password
             ]);
+
+            $user->id = $r->iduser;
+            $user->save();
             return back()->with('success', 'User telah dibuat');
         } catch (\Throwable $th) {
             return back()->with('error', 'Maaf, Terdapat Kesalahan', $th);

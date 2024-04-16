@@ -219,7 +219,7 @@
                 <div class="modal-body">
                     <label>Id User: </label>
                     <div class="mb-1">
-                        <input type="number" name="id" class="touchspin-min-max" value="{{$latestuser_id+1}}"/>
+                        <input type="number" name="iduser" class="touchspin-min-max" value="{{$latestuser_id+1}}"/>
                     </div>
 
                     <label>Nama User: </label>
