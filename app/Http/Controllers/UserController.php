@@ -157,13 +157,29 @@ class UserController extends Controller
         #fungsi untuk mengedit user
         try {
             if ($req->password == '') {
+                $penilaians = Penilaian::where('id_user', $req->idedit)->get();
+
+                foreach ($penilaians as $i => $nilai) {
+                    $nilai->id_user = NULL;
+                }
+
                 User::where('id', $req->idedit)->update([
                     'id' => $req->id,
                     'name' => $req->name,
                     'role' => $req->role,
                     'username' => $req->username,
                 ]);
+
+                foreach ($penilaians as $i => $nilai) {
+                    $nilai->id_user = $req->id;
+                }
             }else{
+                $penilaians = Penilaian::where('id_user', $req->idedit)->get();
+
+                foreach ($penilaians as $i => $nilai) {
+                    $nilai->id_user = NULL;
+                }
+
                 User::where('id', $req->idedit)->update([
                     'id' => $req->id,
                     'name' => $req->name,
@@ -172,6 +188,10 @@ class UserController extends Controller
                     'password' => bcrypt($req->password),
                     'decrypted_password' => $req->password
                 ]);
+
+                foreach ($penilaians as $i => $nilai) {
+                    $nilai->id_user = $req->id;
+                }
             }
             return back()->with('success', 'User Berhasil Diedit.');
         } catch (\Throwable $th) {
