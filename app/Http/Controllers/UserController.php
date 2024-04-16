@@ -158,9 +158,11 @@ class UserController extends Controller
         try {
             if ($req->password == '') {
                 $penilaians = Penilaian::where('id_user', $req->idedit)->get();
+                // dd($penilaians);
 
                 foreach ($penilaians as $i => $nilai) {
                     $nilai->id_user = NULL;
+                    $nilai->save();
                 }
 
                 User::where('id', $req->idedit)->update([
@@ -172,12 +174,14 @@ class UserController extends Controller
 
                 foreach ($penilaians as $i => $nilai) {
                     $nilai->id_user = $req->id;
+                    $nilai->save();
                 }
             }else{
                 $penilaians = Penilaian::where('id_user', $req->idedit)->get();
 
                 foreach ($penilaians as $i => $nilai) {
                     $nilai->id_user = NULL;
+                    $nilai->save();
                 }
 
                 User::where('id', $req->idedit)->update([
@@ -191,10 +195,12 @@ class UserController extends Controller
 
                 foreach ($penilaians as $i => $nilai) {
                     $nilai->id_user = $req->id;
+                    $nilai->save();
                 }
             }
             return back()->with('success', 'User Berhasil Diedit.');
         } catch (\Throwable $th) {
+            dd($th);
             return back()->with('error', 'Terdapat Kesalahan');
         }
     }
