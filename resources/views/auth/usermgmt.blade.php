@@ -75,6 +75,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>No.</th>
+                                    <th>Id</th>
                                     <th>Nama</th>
                                     <th>Username</th>
                                     <th>Password</th>
@@ -323,6 +324,7 @@
 
                 columns : [
                     {data: 'DT_RowIndex'},
+                    {data: 'id'},
                     {data: 'name'},
                     {data: 'username'},
                     {data: 'decrypted_password'},
